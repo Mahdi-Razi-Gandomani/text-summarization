@@ -58,7 +58,7 @@ To run this code, you need the following Python libraries:
 2. Run the script:
 
    ```bash
-   python text_summarization.py
+   python summ.py
 
 ---
 
