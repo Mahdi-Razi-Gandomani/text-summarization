@@ -59,3 +59,9 @@ To run this code, you need the following Python libraries:
 
    ```bash
    python text_summarization.py
+
+---
+
+## References
+
+- **Optimizing Text Summarization**: Edrees, Z., & Ortakci, Y. (2024). *Optimizing Text Summarization with Sentence Clustering and Natural Language Processing*. International Journal of Advanced Computer Science and Applications, 15(10), 1123-1132. DOI: [10.14569/IJACSA.2024.01510115](https://doi.org/10.14569/IJACSA.2024.01510115).
