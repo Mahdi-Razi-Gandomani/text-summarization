@@ -41,12 +41,18 @@ project/
   ```bash
   pip install -r requirements.txt
   ```
+3. Copy the example file, Edit .env and paste your Hugging Face API token
 
-3. Create a file named `.env` in the project root and add your Hugging Face API token:
- 
- ```bash
-HF_API_TOKEN=your_huggingface_token
-  ```
+  ```bash
+   cp .env.example .env
+   
+   # On macOS/Linux:
+   nano .env
+   # On Windows:
+   notepad .env
+   
+   # Replace "your_huggingface_api_token_here" with your actual token
+   ```
 
 Get your token from: https://huggingface.co/settings/tokens
 
