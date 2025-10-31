@@ -26,6 +26,16 @@ project/
 ├─ requirements.txt                  # Python package dependencies
 └─ README.md
 ```
+---
+
+## Dependencies
+
+- **Flask**: Web framework
+- **sentence-transformers**: Sentence embeddings
+- **scikit-learn**: K-means clustering and metrics
+- **nltk**: Sentence tokenization
+- **numpy**: Numerical operations
+- **requests**: HTTP client for Hugging Face API
 
 ---
 
@@ -35,6 +45,7 @@ project/
    ```bash
    git clone https://github.com/Mahdi-Razi-Gandomani/text-summarization.git
    cd text-summarization
+
 2. Install Dependencies
 
   ```bash
@@ -51,12 +62,12 @@ The server will start on `http://127.0.0.1:5000`
 
 ---
 
-## Usage
+## API Endpoints
 
-### API Endpoints
+#### API Information
+**Endpoint**: `GET /`
 
-#### `GET /`
-API information
+Returns information about available endpoints and usage.
 
 **Response:**
 ```json
@@ -68,7 +79,9 @@ API information
 }
 ```
 
-#### `POST /summarize`
+#### Summarize Text
+**Endpoint**: `POST /summarize`
+
 Generate a summary for provided text
 
 **Request:**
@@ -100,7 +113,7 @@ Generate a summary for provided text
 
 ### Example Client Usage
 
-Run the provided client:
+Replace your text and run the provided client:
 
 ```bash
 python summarization_client.py
@@ -117,17 +130,6 @@ curl -X POST http://127.0.0.1:5000/summarize \
     "min_length": 64
   }'
 ```
----
-
-## Error Handling
-
-The API returns appropriate HTTP status codes:
-
-- `200`: Success
-- `400`: Bad request (missing required fields)
-- `401`: Unauthorized (permission error)
-- `503`: Service unavailable (Hugging Face API error)
-- `500`: Internal server error
 
 ---
 
