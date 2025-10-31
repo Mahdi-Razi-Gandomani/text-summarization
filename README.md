@@ -24,6 +24,7 @@ project/
 ├─ summarization_server.py           # Flask server with summarization endpoint
 ├─ summarization_client.py           # Example client for testing the API
 ├─ requirements.txt                  # Python package dependencies
+├─ .env.example                      # Template for environment variables API token
 ├─ .gitignore  
 └─ README.md
 ```
