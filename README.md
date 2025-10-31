@@ -45,7 +45,7 @@ project/
 3. Create a file named `.env` in the project root and add your Hugging Face API token:
  
  ```bash
-HF_API_TOKEN=hf_your_real_huggingface_token_here
+HF_API_TOKEN=your_huggingface_token
   ```
 
 Get your token from: https://huggingface.co/settings/tokens
