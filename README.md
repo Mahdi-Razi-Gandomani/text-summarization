@@ -1,64 +1,133 @@
-# Text Summarization with Extractive and Abstractive Methods
+# Hybrid Text Summarization API
 
-This project demonstrates a hybrid approach to text summarization, combining **extractive** and **abstractive** methods. It uses clustering to extract key sentences and a pre-trained BART model to generate a concise abstractive summary.
-
----
+A Flask-based REST API that combines extractive and abstractive summarization techniques to generate high-quality text summaries. The system uses sentence embeddings, K-means clustering, and the BART model to produce concise, coherent summaries.
 
 ## Features
 
-- **Extractive Summarization**:
-  - Uses clustering to group similar sentences.
-  - Selects the most representative sentence from each cluster based on similarity to a query.
+1. **Extractive Phase**: 
+   - Tokenizes text into sentences
+   - Generates sentence embeddings
+   - Clusters sentences using K-means with optimal cluster selection
+   - Selects representative sentences from each cluster
 
-- **Abstractive Summarization**:
-  - Uses a pre-trained BART model to generate a concise summary from the extracted sentences.
-
-- **Optimal Cluster Selection**:
-  - Determines the optimal number of clusters using the **Elbow Method** (KneeLocator).
-
----
-
-## Requirements
-
-To run this code, you need the following Python libraries:
-
-- `numpy`
-- `nltk`
-- `sentence-transformers`
-- `scikit-learn`
-- `transformers`
-- `kneed`
+2. **Abstractive Phase**:
+   - Feeds extractive summary to BART model via Hugging Face API
+   - Generates final polished summary
 
 ---
 
-## Code Structure
+## Project Structure
 
-### 1. Text Preprocessing
-- The input text is split into sentences using `nltk.sent_tokenize`.
+```
+project/
+│
+├─ summarization_server.py           # Flask server with summarization endpoint
+├─ summarization_client.py           # Example client for testing the API
+├─ requirements.txt                  # Python package dependencies
+└─ README.md
+```
 
-### 2. Sentence Embeddings
-- Sentence embeddings are generated using the `all-MiniLM-L6-v2` model from `sentence-transformers`.
+---
 
-### 3. Clustering
-- **KMeans Clustering** is applied to group similar sentences.
-- The optimal number of clusters is determined using the **Elbow Method** (`KneeLocator`).
+## How to Run
 
-### 4. Extractive Summarization
-- A query sentence is constructed from the first few sentences of the text.
-- The most representative sentence from each cluster is selected based on cosine similarity to the query.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Mahdi-Razi-Gandomani/text-summarization.git
+   cd text-summarization
+2. Install Dependencies
 
-### 5. Abstractive Summarization
-- The extracted sentences are passed to a pre-trained BART model (`facebook/bart-large-cnn`) to generate a concise summary.
+  ```bash
+  pip install -r requirements.txt
+  ```
+
+3. Start the Server
+
+  ```bash
+  python summarization_server.py
+  ```
+
+The server will start on `http://127.0.0.1:5000`
 
 ---
 
 ## Usage
 
-1. Replace the `text` variable with your input text.
-2. Run the script:
+### API Endpoints
 
-   ```bash
-   python summ.py
+#### `GET /`
+API information
+
+**Response:**
+```json
+{
+  "message": "Hybrid Text Summarization API",
+  "endpoints": {
+    "/summarize": "POST Generate summary"
+  }
+}
+```
+
+#### `POST /summarize`
+Generate a summary for provided text
+
+**Request:**
+```json
+{
+  "text": "Your text here...",
+  "max_length": 1024,
+  "min_length": 64
+}
+```
+
+**Parameters:**
+- `text` (required): The text to summarize
+- `max_length` (optional, default: 1024): Maximum summary length
+- `min_length` (optional, default: 64): Minimum summary length
+
+**Response:**
+```json
+{
+  "summary": "Generated summary text...",
+  "metadata": {
+    "original_length": 1523,
+    "summary_length": 234,
+    "max_length": 1024,
+    "min_length": 64
+  }
+}
+```
+
+### Example Client Usage
+
+Run the provided client:
+
+```bash
+python summarization_client.py
+```
+
+Or use curl:
+
+```bash
+curl -X POST http://127.0.0.1:5000/summarize \
+  -H "Content-Type: application/json" \
+  -d '{
+    "text": "Your text here...",
+    "max_length": 1024,
+    "min_length": 64
+  }'
+```
+---
+
+## Error Handling
+
+The API returns appropriate HTTP status codes:
+
+- `200`: Success
+- `400`: Bad request (missing required fields)
+- `401`: Unauthorized (permission error)
+- `503`: Service unavailable (Hugging Face API error)
+- `500`: Internal server error
 
 ---
 
