@@ -44,7 +44,7 @@ project/
 3. Start the Server
 
   ```bash
-  python summarization_server.py
+  python3 summarization_server.py
   ```
 
 The server will start on `http://127.0.0.1:5000`
@@ -105,7 +105,7 @@ Generate a summary for provided text
 Replace your text and run the provided client:
 
 ```bash
-python summarization_client.py
+python3 summarization_client.py
 ```
 
 Or use curl:
