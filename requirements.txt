@@ -1,0 +1,6 @@
+flask
+numpy
+nltk
+sentence-transformers
+scikit-learn
+requests
