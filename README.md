@@ -42,7 +42,16 @@ project/
   pip install -r requirements.txt
   ```
 
-3. Start the Server
+3. Create a file named `.env` in the project root and add your Hugging Face API token:
+ 
+ ```bash
+HF_API_TOKEN=hf_your_real_huggingface_token_here
+  ```
+
+Get your token from: https://huggingface.co/settings/tokens
+
+
+4. Start the Server
 
   ```bash
   python3 summarization_server.py
