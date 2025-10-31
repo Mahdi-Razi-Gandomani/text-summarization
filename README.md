@@ -28,17 +28,6 @@ project/
 ```
 ---
 
-## Dependencies
-
-- **Flask**: Web framework
-- **sentence-transformers**: Sentence embeddings
-- **scikit-learn**: K-means clustering and metrics
-- **nltk**: Sentence tokenization
-- **numpy**: Numerical operations
-- **requests**: HTTP client for Hugging Face API
-
----
-
 ## How to Run
 
 1. Clone the repository:
