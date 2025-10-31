@@ -6,7 +6,11 @@ from sklearn.cluster import KMeans
 from sklearn.metrics import silhouette_score
 from sklearn.metrics.pairwise import cosine_similarity
 import requests
+import os
+from dotenv import load_dotenv
 
+
+load_dotenv()
 
 nltk.download('punkt')
 
@@ -15,7 +19,7 @@ app = Flask(__name__)
 sentence_model = SentenceTransformer('all-MiniLM-L6-v2')
 
 # Hugging Face API
-HF_API_TOKEN = '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'
+HF_API_TOKEN = os.getenv('HF_API_TOKEN')
 BART_API_URL = "https://api-inference.huggingface.co/models/facebook/bart-large-cnn"
 
 
