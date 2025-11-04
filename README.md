@@ -119,13 +119,7 @@ Generate a summary for provided text
 
 ### Example Client Usage
 
-Replace your text and run the provided client:
-
-```bash
-python3 summarization_client.py
-```
-
-Or use curl:
+use curl:
 
 ```bash
 curl -X POST http://127.0.0.1:5000/summarize \
@@ -135,6 +129,12 @@ curl -X POST http://127.0.0.1:5000/summarize \
     "max_length": 1024,
     "min_length": 64
   }'
+```
+
+Or replace your text in the `summarization_client.py` file and run code:
+
+```bash
+python3 summarization_client.py
 ```
 
 ---
