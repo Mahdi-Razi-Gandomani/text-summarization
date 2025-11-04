@@ -1,6 +1,6 @@
 # Hybrid Text Summarization
 
-A Flask-based REST API that combines extractive and abstractive summarization techniques to generate high-quality text summaries. The system uses sentence embeddings, K-means clustering, and the BART model to produce concise, coherent summaries.
+A Flask-based REST API that combines extractive and abstractive summarization techniques to generate text summaries. The system uses sentence embeddings, K-means clustering, and the BART model to produce summaries.
 
 ## Features
 
